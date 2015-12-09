@@ -22,13 +22,19 @@
               <h3 class="masthead-brand">The Guessing Game</h3>
               <nav>
                 <ul class="nav masthead-nav">
-                  <li class="active"><a href="#">Play Again</a></li>
-                  <li><a href="#">Get a Hint</a></li>
+                  <li><a id='playAgain' href="#">Play Again</a></li>
+                  <li><a id='getHint' href="#">Get a Hint</a></li>
                 </ul>
               </nav>
             </div>
+
           </div>
+          <p id="guessed" class="lead">.</p>
+
+          <div class="image">
             <img src="images/ball.png">
+              <p id="magicMessage" class="text"></p>
+          </div>
 
           <div class="inner cover">
             <h1 class="cover-heading">Guess a number.</h1>
@@ -36,21 +42,21 @@
                   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8 col-centered">
               <form>
         			  <div class="form-group">
-                  <input class="form-control input-lg" id="inputsm" type="text">
+                  <input class="form-control input-lg" id="guess" type="text">
                   </div>
                  </div>
                </div>
         			</form>
-
             <p class="lead">
-              <a href="#" class="btn btn-lg btn-default">Ask the Magic Ball</a>
+              <button id="ask" class="btn btn-lg btn-default">Ask the Magic Ball</button>
             </p>
           </div>
-            <p class="lead">You have 5 guesses left.</p>
+            <p id="guessesLeft" class="lead">You have 5 guesses left.</p>
+
 
           <div class="mastfoot">
             <div class="inner">
-              <p>Guessing Game Part 1 for <a href="http://fullstackacademy.com">Fullstack Academy</a>, by <a href="https://github.com/gholevas">@gholevas</a>.</p>
+              <p>Guessing Game for <a href="http://fullstackacademy.com">Fullstack Academy</a>, by <a href="https://github.com/gholevas">@gholevas</a>.</p>
             </div>
           </div>
 
@@ -62,6 +68,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-     <script src="js/main.js"></script>
+     <script src="js/guessingGame.js"></script>
   </body>
 </html>

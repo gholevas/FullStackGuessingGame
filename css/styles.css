@@ -19,7 +19,19 @@ a:hover {
   border: 1px solid #fff;
 }
 
+.image {
+    position:relative;
+}
 
+.text {
+    left: 0;
+    position:absolute;
+    text-align:center;
+    top: 50%;
+    width: 100%;
+    font-size: 18px;
+    color: black;
+}
 /*
  * Base structure
  */
