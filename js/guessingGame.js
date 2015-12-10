@@ -7,8 +7,8 @@ var winNum = generateWinningNumber();
 console.log(winNum);
 var guesses = 5;
 var guessed = [];
-
-/* **** Guessing Game Functions **** */
+$('#confetti').css('visibility','hidden');
+ // **** Guessing Game Functions **** 
 
 function generateWinningNumber(){
 	return Math.floor(Math.random() * 101);
@@ -24,16 +24,10 @@ function playersGuessSubmission(guess){
 	}else{
 
 		if(guesses === 1){
-			$('#guess').css('visibility','hidden');
-			$('button').text('Play Again?');
 			if(guess === winNum){
-				$('#magicMessage').text("That's it.");
-				$('.cover-heading').text("You won!");
+				playerWon();
 			}else{
-				$('#magicMessage').text("The number was " + winNum);
-				$('.cover-heading').text("You lost.");
-				$('#guess').val('');
-				$('#guessesLeft').css('visibility','hidden');
+				playerLost();
 			}
 		}else{
 			guesses--;
@@ -70,15 +64,30 @@ function lowerOrHigher(guess){
 
 function checkGuess(guess){
 	if(guess === winNum){
-		$('#magicMessage').text("That's it.");
-		$('.cover-heading').text("You won!");
-		$('#guess').css('visibility','hidden');
-		$('button').text('Play Again?');
+		playerWon();
 	}else{
 		guessMessage(guess);
 	}
 }
 
+function playerWon(){
+	$('#guess').css('visibility','hidden');
+	$('button').text('Play Again?');
+	$('#magicMessage').text("That's it.");
+	$('.cover-heading').text("You won!");
+	$('#confetti').css('visibility','visible');
+	$('#guess').css('visibility','hidden');
+	$('button').text('Play Again?');
+}
+
+function playerLost(){
+	$('#guess').css('visibility','hidden');
+	$('button').text('Play Again?');
+	$('#magicMessage').text("The number was " + winNum);
+	$('.cover-heading').text("You lost.");
+	$('#guess').val('');
+	$('#guessesLeft').css('visibility','hidden');
+}
 
 function provideHint(){
 	$('#magicMessage').text("The number was " + winNum);
@@ -98,22 +107,23 @@ function playAgain(){
 	guessed = [];
 	winNum = generateWinningNumber();
 	$('#guess').val('');
+	$('#guess').css('visibility','visible');
 	$('#guessed').css('visibility','hidden');
+	$('#guessesLeft').css('visibility','visible');
 	$('#guessesLeft').text('You have 5 guesses left');
 	$('#magicMessage').text('');
 	$('.cover-heading').text("Guess a number.");
 	$('#guess').css('visibility','visible');
 	$('#guessed').text('.');
 	$('#guessed').css('visibility','visible');
+	$('button').text('Ask the Magic Ball');
+	$('#confetti').css('visibility','hidden');
 }
 
 
 /* **** Event Listeners/Handlers ****  */
 $('button').on("click",function(){
 	if($('button').text() === "Play Again?"){
-		$('#guess').css('visibility','visible');
-		$('#guessesLeft').css('visibility','visible');
-		$('button').text('Ask the Magic Ball');
 		playAgain();
 	}else{
 		playersGuessSubmission(parseInt($('#guess').val()));
@@ -123,7 +133,7 @@ $('button').on("click",function(){
 $('#guess').keypress(function (e) {
   if (e.which == 13) {
 	playersGuessSubmission(parseInt($('#guess').val()));
-    return false;    //<---- Add this line
+    return false;  
   }
 });
 
