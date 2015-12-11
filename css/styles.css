@@ -59,6 +59,10 @@ body {
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 
+
+#confetti{
+  visibility: hidden;
+}
 .col-centered{
     float: none;
     margin: 0 auto;
